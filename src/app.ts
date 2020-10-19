@@ -6,8 +6,9 @@ import * as cookieParser from 'cookie-parser';
 import * as path from 'path';
 import './db';
 
-import manageBoardsRouter from './routes/manage-boards';
-import boardRouter from './routes/board';
+// import manageBoardsRouter from './routes/manage-boards';
+// import boardRouter from './routes/board';
+import v1Router from './routes/apiv1';
 
 const app = express();
 
@@ -25,7 +26,6 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', manageBoardsRouter);
-app.use('/api/board', boardRouter);
+app.use('/api', v1Router)
 
 export default app;
