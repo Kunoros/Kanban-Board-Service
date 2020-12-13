@@ -15,6 +15,7 @@ const app = express();
 if (app.get('env') === 'development') {
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'content-type');
     next();
   });
 }
@@ -26,6 +27,6 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', v1Router)
+app.use('/api', v1Router);
 
 export default app;

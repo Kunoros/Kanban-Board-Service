@@ -25,7 +25,26 @@ CREATE TABLE card
 -- 
 SELECT list.list_id, list.list_name, json_agg(jsonb_build_object( 'card_id', card.card_id, 'card_name', card.card_name, 'card_description', card.card_description)) AS card
 FROM list LEFT JOIN card on list.list_id = card.list_id
-WHERE list.board_id='${req.params.id}'
+WHERE list.board_id=38
 GROUP BY list.list_id, card.list_id
 -- 
 
+CREATE TABLE public.board
+(
+    board_id integer NOT NULL DEFAULT nextval('board_id_seq'
+    ::regclass),
+    board_name character varying
+    (255) COLLATE pg_catalog."default",
+    CONSTRAINT board_pkey PRIMARY KEY
+    (board_id)
+)
+
+TABLESPACE pg_default;
+
+    ALTER TABLE public.board
+    OWNER to postgres;
+
+    ALTER TABLE public.board
+    ALTER COLUMN board_id
+    SET
+    STATISTICS 1;
