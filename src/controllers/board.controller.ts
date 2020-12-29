@@ -7,6 +7,7 @@ import {
   crateNewList,
   crateNewCard,
   deleteCardById,
+  updateCardByListId,
 } from '../models/board.models';
 import { findListByBoardId } from '../models/list.models';
 
@@ -54,5 +55,12 @@ export async function createCard(req: Request, res: Response) {
 
 export async function deleteCard(req: Request, res: Response) {
   deleteCardById(req.params.id);
-  // res.send(req.params.id);
+}
+
+export async function updateCard(req: Request, res: Response) {
+  if (!req.body || !req.body) {
+    res.sendStatus(400);
+  }
+  updateCardByListId(req.body.card_id, req.body.list_id);
+  res.send(200);
 }

@@ -8,6 +8,7 @@ import {
   deleteList,
   createCard,
   deleteCard,
+  updateCard,
 } from '../controllers/board.controller';
 
 const router = Router();
@@ -20,4 +21,5 @@ router.post('/boards/:id', createList);
 router.delete('/boards/list/:id', deleteList);
 router.post('/boards/list/:id', createCard);
 router.delete('/boards/list/card/:id', deleteCard);
+router.post('/boards/list/card/:id', updateCard);
 export default router;

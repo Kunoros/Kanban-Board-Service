@@ -48,3 +48,6 @@ TABLESPACE pg_default;
     ALTER COLUMN board_id
     SET
     STATISTICS 1;
+
+
+    UPDATE card SET list_id='' WHERE card_id= 

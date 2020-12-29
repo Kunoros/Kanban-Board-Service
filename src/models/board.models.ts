@@ -76,6 +76,16 @@ async function deleteCardById(cardId: string) {
   }
 }
 
+async function updateCardByListId(cardId: string, listId: string) {
+  try {
+    const updateCard = await pool.query(
+      `UPDATE card SET list_id='${listId}' WHERE card_id=${cardId}`
+    );
+  } catch (err) {
+    console.error(err.message);
+  }
+}
+
 export {
   findBoards,
   createNewBoard,
@@ -84,4 +94,5 @@ export {
   crateNewList,
   crateNewCard,
   deleteCardById,
+  updateCardByListId,
 };
